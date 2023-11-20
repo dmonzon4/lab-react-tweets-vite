@@ -1,38 +1,37 @@
-function Tweet() {
+import ProfileImage from './ProfileImage';
+import User from './User.jsx';
+import Timestamp from './Timestamp.jsx';
+import Message from './Message.jsx';
+import Actions from './Actions.jsx';
+
+function Tweet(props) {
+  console.log(props)
+
+  const { user, timestamp, message } = props.tweet;
   return (
     <div className="tweet">
-      <img
-        src="https://education-team-2020.s3.eu-west-1.amazonaws.com/web-dev/ih_logo.jpeg"
-        className="profile"
-        alt="profile"
-      />
+
+      <ProfileImage src={user.image} alt="profile"/>
+
+
 
       <div className="body">
         <div className="top">
-          <span className="user">
-            <span className="name">Ironhack</span>
-            <span className="handle">@ironhack</span>
-          </span>
+        <User name={user.name} handle={user.handle} />
 
-          <span className="timestamp">Nov 30, 2020</span>
+        <Timestamp time={timestamp} />
         </div>
 
-        <p className="message">
-          On December 7th, we will be hosting a #webinar that will introduce you
-          to #SQL! Are you ready? 🚀
-        </p>
+        <Message message={message} />
+        
+        <Actions />
 
-        <div className="actions">
-          {/* Font Awesome icons */}
-          <i className="far fa-comment" data-testid="comment-icon"></i>
-          <i className="fas fa-retweet" data-testid="retweet-icon"></i>
-          <i className="far fa-heart" data-testid="heart-icon"></i>
-          <i className="fas fa-share" data-testid="share-icon"></i>
-        </div>
+        
       </div>
 
       <i className="fas fa-ellipsis-h"></i>
     </div>
+
   );
 }
 
